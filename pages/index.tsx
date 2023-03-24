@@ -1,4 +1,4 @@
-import { Card, CardHeader, Grid, Typography } from "@mui/material";
+import { Card, CardContent, CardHeader, Grid, Typography } from "@mui/material";
 
 import { Layout } from "@/components/layouts";
 
@@ -9,6 +9,8 @@ export default function Home() {
         <Grid item xs={12} sm={4}>
           <Card sx={{ height: "calc(100vh - 100px)" }}>
             <CardHeader title="Pending" />
+
+            <CardContent></CardContent>
           </Card>
         </Grid>
 
