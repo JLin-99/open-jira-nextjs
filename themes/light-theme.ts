@@ -7,16 +7,20 @@ export const lightTheme = createTheme({
     background: {
       default: grey[300],
     },
-    primary: {
-      main: "#4a14bc",
-    },
     secondary: {
-      main: "#19857b",
+      main: "#4a14bc",
     },
     error: {
       main: red.A400,
     },
   },
 
-  components: {},
+  components: {
+    MuiAppBar: {
+      defaultProps: {
+        elevation: 0,
+      },
+      styleOverrides: {},
+    },
+  },
 });
