@@ -1,6 +1,6 @@
 import { UIState } from "./UIProvider";
 
-type UIActionType =
+export type UIActionType =
   | { type: "UI - Open Sidebar" }
   | { type: "UI - Close Sidebar" };
 

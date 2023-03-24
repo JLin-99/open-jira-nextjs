@@ -4,12 +4,15 @@ import type { AppProps } from "next/app";
 import { CssBaseline, ThemeProvider } from "@mui/material";
 
 import { darkTheme, lightTheme } from "@/themes";
+import { UIProvider } from "@/context/ui";
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <ThemeProvider theme={1 ? darkTheme : lightTheme}>
-      <CssBaseline />
-      <Component {...pageProps} />
-    </ThemeProvider>
+    <UIProvider>
+      <ThemeProvider theme={1 ? darkTheme : lightTheme}>
+        <CssBaseline />
+        <Component {...pageProps} />
+      </ThemeProvider>
+    </UIProvider>
   );
 }
