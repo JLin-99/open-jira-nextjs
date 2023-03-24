@@ -12,7 +12,7 @@ export default function Home() {
             <CardHeader title="Pending" />
 
             <CardContent>
-              <EntryList />
+              <EntryList status="pending" />
             </CardContent>
           </Card>
         </Grid>
@@ -22,7 +22,7 @@ export default function Home() {
             <CardHeader title="In Progress" />
 
             <CardContent>
-              <EntryList />
+              <EntryList status="in-progress" />
             </CardContent>
           </Card>
         </Grid>
@@ -32,7 +32,7 @@ export default function Home() {
             <CardHeader title="Completed" />
 
             <CardContent>
-              <EntryList />
+              <EntryList status="finished" />
             </CardContent>
           </Card>
         </Grid>
