@@ -7,7 +7,8 @@ type Data =
   | {
       message: string;
     }
-  | IEntry[];
+  | IEntry[]
+  | IEntry;
 
 export default function handler(
   req: NextApiRequest,
