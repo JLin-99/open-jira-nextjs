@@ -11,3 +11,7 @@ MongoDB local connection string:
 ```
 mongodb://localhost:27017/entriesDB
 ```
+
+## Environment variables
+
+Add the necessary environment variables and rename the **.env.template** to **.env**
