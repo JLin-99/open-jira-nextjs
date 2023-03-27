@@ -4,7 +4,7 @@ import { List, Paper } from "@mui/material";
 import { EntryListItem } from "./EntryListItem";
 
 import { EntryStatus } from "@/interfaces";
-import { EntriesContext } from "../entries";
+import { EntriesContext } from "@/context/entries";
 
 interface Props {
   status: EntryStatus;

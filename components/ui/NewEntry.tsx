@@ -5,14 +5,15 @@ import { Button, TextField } from "@mui/material";
 import AddIcon from "@mui/icons-material/AddCircleOutlineOutlined";
 import SaveOutlinedIcon from "@mui/icons-material/SaveAltOutlined";
 
-import { EntriesContext } from "../entries";
+import { EntriesContext } from "@/context/entries";
+import { UIContext } from "@/context/ui";
 
 export const NewEntry = () => {
-  const [isAdding, setIsAdding] = useState(false);
+  const { addNewEntry } = useContext(EntriesContext);
+  const { isAddingEntry, setIsAddingEntry } = useContext(UIContext);
+
   const [inputValue, setInputValue] = useState("");
   const [touched, setTouched] = useState(false);
-
-  const { addNewEntry } = useContext(EntriesContext);
 
   const onSave = () => {
     if (!inputValue) return;
@@ -20,10 +21,10 @@ export const NewEntry = () => {
     addNewEntry(inputValue);
     setInputValue("");
     setTouched(false);
-    setIsAdding(false);
+    setIsAddingEntry(false);
   };
 
-  return isAdding ? (
+  return isAddingEntry ? (
     <>
       <TextField
         fullWidth
@@ -39,7 +40,7 @@ export const NewEntry = () => {
       />
 
       <Box display="flex" justifyContent="space-between">
-        <Button variant="text" onClick={() => setIsAdding(false)}>
+        <Button variant="text" onClick={() => setIsAddingEntry(false)}>
           Cancel
         </Button>
         <Button
@@ -57,7 +58,7 @@ export const NewEntry = () => {
       startIcon={<AddIcon />}
       fullWidth
       variant="outlined"
-      onClick={() => setIsAdding(true)}
+      onClick={() => setIsAddingEntry(true)}
     >
       Add Task
     </Button>
