@@ -23,7 +23,7 @@ export default function handler(
 
   switch (req.method) {
     case "GET":
-      return updateEntry(req, res);
+      return getEntry(req, res);
 
     case "PUT":
       return updateEntry(req, res);
