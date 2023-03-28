@@ -1,4 +1,6 @@
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, FC, useState } from "react";
+
+import { GetServerSideProps } from "next";
 
 import {
   Button,
@@ -19,14 +21,19 @@ import {
 import SaveOutlinedIcon from "@mui/icons-material/SaveOutlined";
 import DeleteOutlinedIcon from "@mui/icons-material/DeleteOutlined";
 
+import { dbEntries } from "@/database";
 import { Layout } from "@/components/layouts";
-import { EntryStatus } from "@/interfaces";
+import { Entry, EntryStatus } from "@/interfaces";
 
 const validStatus: EntryStatus[] = ["pending", "in-progress", "finished"];
 
-export const EntryPage = () => {
-  const [inputValue, setInputValue] = useState("");
-  const [status, setStatus] = useState<EntryStatus>("pending");
+interface Props {
+  entry: Entry;
+}
+
+export const EntryPage: FC<Props> = ({ entry }) => {
+  const [inputValue, setInputValue] = useState(entry.description);
+  const [status, setStatus] = useState<EntryStatus>(entry.status);
   const [touched, setTouched] = useState(false);
 
   const onInputValueChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -40,13 +47,13 @@ export const EntryPage = () => {
   const onSave = () => {};
 
   return (
-    <Layout title="... ... ...">
+    <Layout title={inputValue.substring(0, 20) + "..."}>
       <Grid container justifyContent="center" sx={{ marginTop: 2 }}>
         <Grid item xs={12} sm={8} md={6}>
           <Card>
             <CardHeader
-              title={`Entry: ${inputValue}`}
-              subheader={"Created ... ago"}
+              title="Entry:"
+              subheader={`Created ${entry.createdAt} ago`}
             />
 
             <CardContent>
@@ -105,6 +112,25 @@ export const EntryPage = () => {
       </IconButton>
     </Layout>
   );
+};
+
+export const getServerSideProps: GetServerSideProps = async ({ params }) => {
+  const { id } = params as { id: string };
+
+  const entry = await dbEntries.getEntryById(id);
+
+  if (!entry) {
+    return {
+      redirect: {
+        destination: "/",
+        permanent: false,
+      },
+    };
+  }
+
+  return {
+    props: { entry },
+  };
 };
 
 export default EntryPage;
