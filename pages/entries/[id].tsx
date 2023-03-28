@@ -58,6 +58,9 @@ export const EntryPage = () => {
                 label="New entry"
                 value={inputValue}
                 onChange={onInputValueChange}
+                onBlur={() => setTouched(true)}
+                helperText={!inputValue.length && touched && "Enter some text"}
+                error={!inputValue.length && touched}
               />
 
               <FormControl>
@@ -81,6 +84,7 @@ export const EntryPage = () => {
                 variant="contained"
                 fullWidth
                 onClick={onSave}
+                disabled={!inputValue.length}
               >
                 Save
               </Button>
