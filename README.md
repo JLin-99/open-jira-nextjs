@@ -1,5 +1,7 @@
 # Next.js OpenJira App
 
+## Getting Started
+
 The database is needed to run it locally
 
 ```
@@ -12,9 +14,14 @@ MongoDB local connection string:
 mongodb://localhost:27017/entriesDB
 ```
 
-## Environment variables
-
 Add the necessary environment variables and rename the **.env.template** to **.env**
+
+Install the dependencies and run the development server:
+
+```
+npm install
+npm run dev
+```
 
 ## Populate the database with test data (dev env)
 
