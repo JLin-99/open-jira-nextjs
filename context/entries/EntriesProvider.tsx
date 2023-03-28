@@ -2,7 +2,7 @@ import { FC, PropsWithChildren, useEffect, useReducer } from "react";
 
 import { Entry } from "@/interfaces";
 import { EntriesContext, entriesReducer } from "./";
-import entriesAPI from "@/apis/entriesApi";
+import entriesAPI from "@/apis/entriesAPI";
 
 export interface EntriesState {
   entries: Entry[];
